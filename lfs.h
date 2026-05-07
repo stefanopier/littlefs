@@ -27,6 +27,35 @@ extern "C"
 
 // Version of On-disk data structures
 // Major (top-nibble), incremented on backwards incompatible changes
+/*
+ * The little filesystem
+ *
+ * Copyright (c) 2022, The littlefs authors.
+ * Copyright (c) 2017, Arm Limited. All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+#ifndef LFS_H
+#define LFS_H
+
+#include "lfs_util.h"
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+
+/// Version info ///
+
+// Software library version
+// Major (top-nibble), incremented on backwards incompatible changes
+// Minor (bottom-nibble), incremented on feature additions
+#define LFS_VERSION 0x0002000b
+#define LFS_VERSION_MAJOR (0xffff & (LFS_VERSION >> 16))
+#define LFS_VERSION_MINOR (0xffff & (LFS_VERSION >>  0))
+
+// Version of On-disk data structures
+// Major (top-nibble), incremented on backwards incompatible changes
 // Minor (bottom-nibble), incremented on feature additions
 #define LFS_DISK_VERSION 0x00020001
 #define LFS_DISK_VERSION_MAJOR (0xffff & (LFS_DISK_VERSION >> 16))
@@ -709,7 +738,7 @@ int lfs_dir_rewind(lfs_t *lfs, lfs_dir_t *dir);
 
 
 /// Filesystem-level filesystem operations
-
+//
 // Find on-disk info about the filesystem
 //
 // Fills out the fsinfo structure based on the filesystem found on-disk.
